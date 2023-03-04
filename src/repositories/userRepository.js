@@ -25,4 +25,18 @@ async function deleteUserSession(id){
     `,[id])
 }
 
-export const userRepository = {checkEmailExists,createUser,createUserSession,deleteUserSession}
+async function findUserSession(token){
+    return connection.query(`
+        SELECT * FROM "sessionsUsers"
+        WHERE token=$1
+    `,[token])
+}
+
+async function getInfo(id){
+    return connection.query(`
+        SELECT email,name,car,"licensePlate",credits,"tagId" FROM users
+        WHERE id=$1
+    `,[id])
+}
+
+export const userRepository = {checkEmailExists,createUser,createUserSession,deleteUserSession,findUserSession,getInfo}

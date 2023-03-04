@@ -34,8 +34,20 @@ async function signIn(req,res){
         const token = uuid();
 
         await userRepository.createUserSession(userId,token);
-        return res.send({token});
+        console.log(emailExists.rows)
+        return res.send({userId:emailExists.rows[0].id, token});
 
+    }catch(e){
+        console.log(e);
+        return res.send(e).status(500);
+    }
+}
+
+async function getInfo(req,res){
+    const id = res.locals.userId
+    try{
+        const userInfo = await userRepository.getInfo(id);
+        return res.send(userInfo.rows[0])
     }catch(e){
         console.log(e);
         return res.send(e).status(500);
@@ -44,4 +56,4 @@ async function signIn(req,res){
 
 
 
-export const userController = {signUp,signIn}
+export const userController = {signUp,signIn,getInfo}
