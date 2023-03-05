@@ -5,8 +5,11 @@ async function getSpots(){
 }
 
 async function setSpot(id,value){
-    console.log("entrou")
     return connection.query(`UPDATE "parkingSpots" SET ocupied = $1, reserved=false,"userId"=null WHERE id=$2`,[value,id])
 }
 
-export const parkingRepository = {getSpots,setSpot}
+async function getReservedSpot(userId){
+    return connection.query(`SELECT * FROM "parkingSpots" WHERE "userId"=$1`,[userId])
+}
+
+export const parkingRepository = {getSpots,setSpot,getReservedSpot}

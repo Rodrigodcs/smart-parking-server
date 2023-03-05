@@ -54,6 +54,47 @@ async function getInfo(req,res){
     }
 }
 
+async function makeReservation(req,res){
+    const spotId = req.params.spotId
+    const userId = res.locals.userId
+    try{
+        console.log("userId:",userId)
+        console.log("spotId:",spotId)
+        //pegar usuário com id
+        //verificar se usuário tem créditos
+        //pegar quantidade de carros atualmente na garagem
+        //pegar quantidade de carros máxima
+        //verificar se pode reservar
+        
+
+        return res.send("OK");
+
+    }catch(e){
+        console.log(e);
+        return res.send(e).status(500);
+    }
+}
+
+async function cancelReservation(req,res){
+    const userId = res.locals.userId
+    try{
+        console.log("userId:",userId)
+        console.log("spotId:",spotId)
+        //pegar usuário com id
+        //verificar se usuário tem créditos
+        //pegar quantidade de carros atualmente na garagem
+        //pegar quantidade de carros máxima
+        //verificar se pode reservar
+        
+
+        return res.send("OK");
+
+    }catch(e){
+        console.log(e);
+        return res.send(e).status(500);
+    }
+}
 
 
-export const userController = {signUp,signIn,getInfo}
+
+export const userController = {signUp,signIn,getInfo,makeReservation,cancelReservation}

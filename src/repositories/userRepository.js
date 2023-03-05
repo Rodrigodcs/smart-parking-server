@@ -8,7 +8,7 @@ async function createUser(name,email,hashedPassword,car,licensePlate){
     return connection.query(`
         INSERT INTO users (name,email,password,car,"licensePlate",credits) 
         VALUES($1,$2,$3,$4,$5,$6)
-    `,[name,email,hashedPassword,car,licensePlate,0])
+    `,[name,email,hashedPassword,car,licensePlate,50])
 }
 
 async function createUserSession(id,token){
@@ -39,4 +39,16 @@ async function getInfo(id){
     `,[id])
 }
 
-export const userRepository = {checkEmailExists,createUser,createUserSession,deleteUserSession,findUserSession,getInfo}
+async function updateCredits(userId,newCredits){
+    await connection.query(`UPDATE users SET credits = $1 WHERE id = $2`,[newCredits,userId])
+}
+
+export const userRepository = {
+    checkEmailExists,
+    createUser,
+    createUserSession,
+    deleteUserSession,
+    findUserSession,
+    getInfo,
+    updateCredits
+}

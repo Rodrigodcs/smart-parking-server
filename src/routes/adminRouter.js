@@ -4,6 +4,6 @@ import {adminValidator} from "../middlewares/adminMiddleware.js"
 
 const adminRouter = Router();
 
-adminRouter.post("/admin/signIn", adminValidator.validateSignInBody, adminController.signIn)
+adminRouter.post("/admin/signIn", adminValidator.validateSignInBody, adminController.signIn);//completo
 
 export default adminRouter;
