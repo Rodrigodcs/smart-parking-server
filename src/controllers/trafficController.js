@@ -20,17 +20,17 @@ async function checkIn(req,res){
 
         //verifica se tem créditos positivos
         if(user.credits<=0) return res.status(401).send("CRÉDITOS INSUFICIENTES")
-
+        
+        //verifica se usuário não está atualmente no estacionamento
+        const alreadyIn = await trafficRepository.getParkedFromId(userId)
+        if(alreadyIn.rowCount>0) return res.status(401).send("É PRECISO FAZER CHECK OUT")
+        
         //verifica se estacionamento não está lotado
         const config = await configRepository.getConfig()
         const totalSpots = config.rows[0].totalSpots
         console.log(totalSpots)
         const parked = await trafficRepository.getParked()
         if(parked.rowCount>=totalSpots) return res.status(401).send("MAX CAPACITY")
-
-        //verifica se usuário não está atualmente no estacionamento
-        const alreadyIn = await trafficRepository.getParkedFromId(userId)
-        if(alreadyIn.rowCount>0) return res.status(401).send("É PRECISO FAZER CHECK OUT")
 
         //adicionar check in de usuário na tabela traffic
         await trafficRepository.userCheckIn(userId,checkInTime)
