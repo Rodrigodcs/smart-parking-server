@@ -25,4 +25,16 @@ async function signIn(req,res){
     }
 }
 
-export const adminController = {signIn}
+async function resetDatabase(req,res){
+    try{
+        await adminRepository.resetDatabase()
+        
+        return res.status(200).send("DATABASE RESETED");
+
+    }catch(e){
+        console.log(e);
+        return res.send(e).status(500);
+    }
+}
+
+export const adminController = {signIn,resetDatabase}

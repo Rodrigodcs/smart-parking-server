@@ -71,12 +71,13 @@ async function makeReservation(req,res){
         const user = userExists.rows[0]
         console.log(user)
 
-        //verificar se vaga já não está reservada
+        //verificar se vaga já não está reservada ou ocupada
         const spotToReserve = await parkingRepository.getSpot(spotId)
         console.log(spotToReserve.rows[0])
         const spot = spotToReserve.rows[0]
         //vaga existe?
         if(!spotToReserve.rowCount) return res.status(401).send("VAGA NÃO ENCONTRADA")
+        if(spot.ocupied) return res.status(401).send("VAGA OCUPADA")
         //já reservada em seu nome?
         if(spot.userId==userId) return res.status(401).send("VAGA JÁ RESERVADA EM SEU NOME")
         //reservada em nome de outro?
