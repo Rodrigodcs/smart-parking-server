@@ -77,6 +77,7 @@ async function makeReservation(req,res){
         const spot = spotToReserve.rows[0]
         //vaga existe?
         if(!spotToReserve.rowCount) return res.status(401).send("VAGA NÃO ENCONTRADA")
+        //vaga ocupada
         if(spot.ocupied) return res.status(401).send("VAGA OCUPADA")
         //já reservada em seu nome?
         if(spot.userId==userId) return res.status(401).send("VAGA JÁ RESERVADA EM SEU NOME")
