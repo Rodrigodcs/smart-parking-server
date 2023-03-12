@@ -130,9 +130,9 @@ async function resetDatabase(){
         INSERT INTO users (name,email,password,car,"licensePlate",credits,"tagId") VALUES('Rodrigo','ro@gmail.com','$2b$10$Rzfy6E78prfZq1ivxi1v6.AfDYegTpYwMUcRlImuDtUvM7cnEakIe','Gol','ABC1111',50,'C1F95422');
         INSERT INTO users (name,email,password,car,"licensePlate",credits,"tagId") VALUES('Marcela','ma@gmail.com','$2b$10$Rzfy6E78prfZq1ivxi1v6.AfDYegTpYwMUcRlImuDtUvM7cnEakIe','Etios','ABC2222',50,'C1C2F222');
         INSERT INTO users (name,email,password,car,"licensePlate",credits,"tagId") VALUES('Leandro','le@gmail.com','$2b$10$Rzfy6E78prfZq1ivxi1v6.AfDYegTpYwMUcRlImuDtUvM7cnEakIe','Idea','ABC3333',50,'D113E822');
-        INSERT INTO users (name,email,password,car,"licensePlate",credits,"tagId") VALUES('Ivete','iv@gmail.com','$2b$10$Rzfy6E78prfZq1ivxi1v6.AfDYegTpYwMUcRlImuDtUvM7cnEakIe','Equinox','ABC4444',50,'4A10B489');
-        INSERT INTO users (name,email,password,car,"licensePlate",credits,"tagId") VALUES('Matheus','mat@gmail.com','$2b$10$Rzfy6E78prfZq1ivxi1v6.AfDYegTpYwMUcRlImuDtUvM7cnEakIe','Corsa','ABC5555',50,'C1E26922');
-        INSERT INTO users (name,email,password,car,"licensePlate",credits,"tagId") VALUES('Gustavo','gus@gmail.com','$2b$10$Rzfy6E78prfZq1ivxi1v6.AfDYegTpYwMUcRlImuDtUvM7cnEakIe','Fusca','ABC6666',2,'339795E2');
+        INSERT INTO users (name,email,password,car,"licensePlate",credits,"tagId") VALUES('Ivete','iv@gmail.com','$2b$10$Rzfy6E78prfZq1ivxi1v6.AfDYegTpYwMUcRlImuDtUvM7cnEakIe','Equinox','ABC4444',50,'D13CA622');
+        INSERT INTO users (name,email,password,car,"licensePlate",credits,"tagId") VALUES('Matheus','mat@gmail.com','$2b$10$Rzfy6E78prfZq1ivxi1v6.AfDYegTpYwMUcRlImuDtUvM7cnEakIe','Corsa','ABC5555',2,'C1E26922');
+        INSERT INTO users (name,email,password,car,"licensePlate",credits,"tagId") VALUES('Gustavo','gus@gmail.com','$2b$10$Rzfy6E78prfZq1ivxi1v6.AfDYegTpYwMUcRlImuDtUvM7cnEakIe','Fusca','ABC6666',1,'3397952E');
         INSERT INTO users (name,email,password,car,"licensePlate",credits,"tagId") VALUES('Oscar','os@gmail.com','$2b$10$Rzfy6E78prfZq1ivxi1v6.AfDYegTpYwMUcRlImuDtUvM7cnEakIe','Fusca','ABC7777',-10,'43005B2E');
     `)
 }
