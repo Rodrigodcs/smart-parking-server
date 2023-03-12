@@ -5,4 +5,13 @@ const signInSchema = Joi.object({
     password: Joi.string().required(),
 });
 
-export {signInSchema}
+const tagRegistrationSchema = Joi.object({
+    email: Joi.string().required(),
+});
+
+const addCreditSchema = Joi.object({
+    email: Joi.string().required(),
+    value: Joi.number().positive().min(1).required()
+});
+
+export {signInSchema,tagRegistrationSchema,addCreditSchema}

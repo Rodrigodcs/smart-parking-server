@@ -43,6 +43,10 @@ async function updateCredits(userId,newCredits){
     await connection.query(`UPDATE users SET credits = $1 WHERE id = $2`,[newCredits,userId])
 }
 
+async function addCredits(userEmail,credits){
+    await connection.query(`UPDATE users SET credits = credits+$1 WHERE email = $2`,[credits,userEmail])
+}
+
 export const userRepository = {
     checkEmailExists,
     createUser,
@@ -50,5 +54,6 @@ export const userRepository = {
     deleteUserSession,
     findUserSession,
     getInfo,
-    updateCredits
+    updateCredits,
+    addCredits
 }

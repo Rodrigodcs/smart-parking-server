@@ -14,13 +14,19 @@ function validateSignInBody(req,res,next){
 }
 
 async function autenticateUser(req,res,next){
-    console.log(req.headers.authorization)
-    const { authorization } = req.headers
-    const token = authorization?.replace('Bearer ', "")
-    const userSession = await userRepository.findUserSession(token)
-    if(!userSession.rowCount) return res.sendStatus(401)
-    res.locals.userId=userSession.rows[0].userId
-    next()
+    try{
+        const { authorization } = req.headers
+        const token = authorization?.replace('Bearer ', "")
+
+        const userSession = await userRepository.findUserSession(token)
+        if(!userSession.rowCount) return res.sendStatus(401)
+
+        res.locals.userId=userSession.rows[0].userId
+        next()
+    }catch(e){
+        console.log(e);
+        return res.send(e).status(500)
+    }
 }
 
 export const userValidator = {validateSignUpBody,validateSignInBody,autenticateUser}

@@ -18,6 +18,24 @@ async function deleteAdminSession(id){
     `,[id])
 }
 
+async function findAdminSession(token){
+    return connection.query(`
+        SELECT * FROM "sessionsAdmins"
+        WHERE token=$1
+    `,[token])
+}
+
+async function registrateUserTag(userEmail,tag){
+    return connection.query(`UPDATE users SET "tagId" = $1 WHERE email = $2`,[tag,userEmail])
+}
+
+async function findUser(tag){
+    return connection.query(`
+        SELECT email,name,car,"licensePlate",credits,"tagId" FROM users
+        WHERE "tagId"=$1
+    `,[tag])
+}
+
 async function resetDatabase(){
     return connection.query(`
         DROP TABLE config;
@@ -121,4 +139,4 @@ async function resetDatabase(){
     `)
 }
 
-export const adminRepository = {checkEmailExists,createAdminSession,deleteAdminSession,resetDatabase}
+export const adminRepository = {checkEmailExists,createAdminSession,deleteAdminSession,resetDatabase,findAdminSession,registrateUserTag,findUser}
