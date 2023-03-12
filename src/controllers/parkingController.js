@@ -14,11 +14,12 @@ async function ledStatus(req,res){
     try{
         const parkingSpots = await parkingRepository.getSpots();
         console.log(parkingSpots.rows)
-        let reserved = ""
+        let leds = ""
         parkingSpots.rows.forEach((spot)=>{
-            reserved+=(spot.reserved || spot.ocupied)?"1":"0"
+            leds+=(spot.reserved || spot.ocupied)?"1":"0"
         })
-        return res.status(200).send(reserved)
+        console.log(leds)
+        return res.status(200).send(leds)
     }catch(e){
         console.log(e);
         return res.send(e).status(500);
