@@ -12,7 +12,7 @@ app.use(express.text())
 
 app.use(router);
 
-const port = process.env.PORT || 4000
+const port = process.env.PORT || 8080
 app.listen(port, () => {
     console.log(`Server running on port ${port}`);
 });
