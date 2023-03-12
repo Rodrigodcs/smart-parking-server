@@ -99,7 +99,7 @@ async function tagReceived(req,res){
             return res.status(200).send("info do user");
         }else if(waitingRegistration){
             const tagAlreadyRegistered = await adminRepository.findUser(cardId)
-            if(tagAlreadyRegistered.rowCount) return res.status(400).send("Tag já registrada")
+            if(tagAlreadyRegistered.rowCount) return res.status(409).send("Tag já registrada")
 
             await adminRepository.registrateUserTag(userEmail,cardId)
             resetTemporaryInfo()
@@ -119,7 +119,7 @@ async function addCredits(req,res){
     try{
         const userExists = await userRepository.checkEmailExists(userEmail)
         if(!userExists.rowCount) return res.status(401).send("usuário não cadastrado")
-        
+
         await userRepository.addCredits(userEmail,credits)
         
         return res.status(200).send("CREDITOS ADICIONADOS");

@@ -7,7 +7,7 @@ async function tagValidator(req,res,next){
         const tagValidation = trafficSchemas.tagSchema.validate(tagId)
         if(tagValidation.error) return res.status(422).send(tagValidation.error.details[0].message);
         const tagExists = await trafficRepository.findTag(tagId)
-        if(!tagExists.rowCount) return res.status(404).send("TAG NÃO CADASTRADA")
+        if(!tagExists.rowCount) return res.status(403).send("TAG NÃO CADASTRADA")
         res.locals.userId=tagExists.rows[0].id
         next()
     }catch(e){

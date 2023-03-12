@@ -10,7 +10,7 @@ async function checkIn(req,res){
     try{
         //verifica se usuário existe
         const userExists = await userRepository.getInfo(userId)
-        if(!userExists.rowCount) return res.status(401).send("USUÁRIO NÃO EXISTE")
+        if(!userExists.rowCount) return res.status(403).send("USUÁRIO NÃO EXISTE")
         const user = userExists.rows[0]
         console.log(user)
 
@@ -23,14 +23,14 @@ async function checkIn(req,res){
         
         //verifica se usuário não está atualmente no estacionamento
         const alreadyIn = await trafficRepository.getParkedFromId(userId)
-        if(alreadyIn.rowCount>0) return res.status(401).send("É PRECISO FAZER CHECK OUT")
+        if(alreadyIn.rowCount>0) return res.status(405).send("É PRECISO FAZER CHECK OUT")
         
         //verifica se estacionamento não está lotado
         const config = await configRepository.getConfig()
         const totalSpots = config.rows[0].totalSpots
         console.log(totalSpots)
         const parked = await trafficRepository.getParked()
-        if(parked.rowCount>=totalSpots) return res.status(401).send("MAX CAPACITY")
+        if(parked.rowCount>=totalSpots) return res.status(406).send("MAX CAPACITY")
 
         //adicionar check in de usuário na tabela traffic
         await trafficRepository.userCheckIn(userId,checkInTime)
@@ -53,7 +53,7 @@ async function checkOut(req,res){
     try{
         //verifica se usuário existe
         const userExists = await userRepository.getInfo(userId)
-        if(!userExists.rowCount) return res.status(401).send("USUÁRIO NÃO EXISTE")
+        if(!userExists.rowCount) return res.status(403).send("USUÁRIO NÃO EXISTE")
         const user = userExists.rows[0]
         console.log(user)
 
@@ -63,11 +63,11 @@ async function checkOut(req,res){
 
         //verifica se usuário está no estacionamento
         const currentlyParked = await trafficRepository.getParkedFromId(userId)
-        if(!currentlyParked.rowCount) return res.status(402).send("É PRECISO FAZER CHECK IN");
+        if(!currentlyParked.rowCount) return res.status(405).send("É PRECISO FAZER CHECK IN");
 
         //pegar último check in desse user
         const lastCheckIn = await trafficRepository.lastCheck(userId)
-        if(lastCheckIn.rows[0].checks === "out") return res.status(403).send("É PRECISO FAZER CHECK IN");
+        if(lastCheckIn.rows[0].checks === "out") return res.status(405).send("É PRECISO FAZER CHECK IN");
 
         //calcula o valor a pagar
         const checkInTime = lastCheckIn.rows[0].time;
