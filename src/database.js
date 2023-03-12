@@ -3,13 +3,13 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
-const { Pool } = pg;
+const {Pool} = pg
 
-const configDatabase = {
+const connection = new Pool({
     connectionString: process.env.DATABASE_URL,
-};
-if (process.env.MODE === "production") configDatabase.ssl = false;
-
-const connection = new Pool(configDatabase);
+    ssl: {
+        rejectUnauthorized: false
+    }
+})
 
 export default connection;
