@@ -87,6 +87,10 @@ async function makeReservation(req,res){
         //verifica se tem créditos positivos
         if(user.credits<=0) return res.status(401).send("CRÉDITOS INSUFICIENTES")
 
+        //verifica se usuário já não está no estacionamento
+        const userParked = await trafficRepository.getParkedFromId(userId);
+        if(userParked.rowCount) return res.status(401).send("USUÁRIO JÁ ESTÁ ESTACIONADO")
+
         //verifica se estacionamento não está lotado
         const config = await configRepository.getConfig()
         const totalSpots = config.rows[0].totalSpots
