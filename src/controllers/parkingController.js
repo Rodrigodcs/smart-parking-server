@@ -16,7 +16,7 @@ async function ledStatus(req,res){
         console.log(parkingSpots.rows)
         let reserved = ""
         parkingSpots.rows.forEach((spot)=>{
-            reserved+=spot.reserved?"1":"0"
+            reserved+=(spot.reserved || spot.ocupied)?"1":"0"
         })
         return res.status(200).send(reserved)
     }catch(e){
@@ -37,7 +37,7 @@ async function sensorsStatus(req,res){
         })
         const parkingSpotsUpdated = await parkingRepository.getSpots();
         console.log(parkingSpotsUpdated.rows)
-        return res.send(parkingSpotsUpdated.rows)
+        return res.status(200).send(parkingSpotsUpdated.rows)
     }catch(e){
         console.log(e);
         return res.send(e).status(500);
