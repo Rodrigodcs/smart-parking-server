@@ -52,11 +52,10 @@ async function tagReader(req,res){
 async function getUserInfo(req,res){
     const userTag = temporaryUserTag
     console.log(userTag)
-    resetTemporaryInfo()
     try{
         const userInfo = await adminRepository.findUser(userTag)
         if(!userInfo.rowCount) return res.status(401).send("Usuário não encontrado");
-        
+        resetTemporaryInfo()
         return res.status(200).send(userInfo.rows[0]);
     }catch(e){
         return res.status(500).send(e)
