@@ -7,7 +7,7 @@ const adminRouter = Router();
 
 adminRouter.post("/admin/signIn", adminValidator.validateSignInBody, adminController.signIn);//completo
 
-adminRouter.get("/admin/tagRegistration", adminValidator.validateTagRegistrationBody, adminValidator.autenticateAdmin, adminController.tagRegistration);//completo
+adminRouter.post("/admin/tagRegistration", adminValidator.validateTagRegistrationBody, adminValidator.autenticateAdmin, adminController.tagRegistration);//completo
 
 adminRouter.get("/admin/tagReader", adminValidator.autenticateAdmin, adminController.tagReader);//completo
 adminRouter.get("/admin/userInfo", adminValidator.autenticateAdmin, adminController.getUserInfo);//completo
