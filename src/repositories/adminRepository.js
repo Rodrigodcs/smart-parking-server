@@ -119,21 +119,24 @@ async function resetDatabase(){
         ALTER TABLE "sessionsAdmins" ADD CONSTRAINT "sessionsAdmins_fk0" FOREIGN KEY("adminId") REFERENCES admins(id);
         
         ALTER TABLE parked ADD CONSTRAINT parked_fk0 FOREIGN KEY("userId") REFERENCES users(id);
-        
-        INSERT INTO admins (email,password) VALUES ('admin@admin.com','123456');
+
+
         INSERT INTO "parkingSpots" (number,ocupied,reserved) VALUES (1,false,false);
         INSERT INTO "parkingSpots" (number,ocupied,reserved) VALUES (2,false,false);
         INSERT INTO "parkingSpots" (number,ocupied,reserved) VALUES (3,false,false);
         INSERT INTO "parkingSpots" (number,ocupied,reserved) VALUES (4,false,false);
+
         INSERT INTO config (value, "totalSpots") VALUES (2,4);
         
-        INSERT INTO users (name,email,password,car,"licensePlate",credits,"tagId") VALUES('Rodrigo','ro@gmail.com','$2b$10$Rzfy6E78prfZq1ivxi1v6.AfDYegTpYwMUcRlImuDtUvM7cnEakIe','Gol','ABC1111',50,'C1F95422');
-        INSERT INTO users (name,email,password,car,"licensePlate",credits,"tagId") VALUES('Marcela','ma@gmail.com','$2b$10$Rzfy6E78prfZq1ivxi1v6.AfDYegTpYwMUcRlImuDtUvM7cnEakIe','Etios','ABC2222',50,'C1C2F222');
-        INSERT INTO users (name,email,password,car,"licensePlate",credits,"tagId") VALUES('Leandro','le@gmail.com','$2b$10$Rzfy6E78prfZq1ivxi1v6.AfDYegTpYwMUcRlImuDtUvM7cnEakIe','Idea','ABC3333',50,'D113E822');
-        INSERT INTO users (name,email,password,car,"licensePlate",credits,"tagId") VALUES('Ivete','iv@gmail.com','$2b$10$Rzfy6E78prfZq1ivxi1v6.AfDYegTpYwMUcRlImuDtUvM7cnEakIe','Equinox','ABC4444',50,'D13CA622');
-        INSERT INTO users (name,email,password,car,"licensePlate",credits,"tagId") VALUES('Matheus','mat@gmail.com','$2b$10$Rzfy6E78prfZq1ivxi1v6.AfDYegTpYwMUcRlImuDtUvM7cnEakIe','Corsa','ABC5555',2,'C1E26922');
-        INSERT INTO users (name,email,password,car,"licensePlate",credits,"tagId") VALUES('Gustavo','gus@gmail.com','$2b$10$Rzfy6E78prfZq1ivxi1v6.AfDYegTpYwMUcRlImuDtUvM7cnEakIe','Fusca','ABC6666',1,'3397952E');
-        INSERT INTO users (name,email,password,car,"licensePlate",credits,"tagId") VALUES('Oscar','os@gmail.com','$2b$10$Rzfy6E78prfZq1ivxi1v6.AfDYegTpYwMUcRlImuDtUvM7cnEakIe','Fusca','ABC7777',-10,'43005B2E');
+        INSERT INTO admins (email,password) VALUES ('admin@admin.com','123456');
+
+        INSERT INTO users (name,email,password,car,"licensePlate",credits,"tagId") VALUES('User1','user1@gmail.com','$2b$10$Rzfy6E78prfZq1ivxi1v6.AfDYegTpYwMUcRlImuDtUvM7cnEakIe','Gol','ABC1111',50,'C1F95422');
+        INSERT INTO users (name,email,password,car,"licensePlate",credits,"tagId") VALUES('User2','user2@gmail.com','$2b$10$Rzfy6E78prfZq1ivxi1v6.AfDYegTpYwMUcRlImuDtUvM7cnEakIe','Etios','ABC2222',50,'C1C2F222');
+        INSERT INTO users (name,email,password,car,"licensePlate",credits,"tagId") VALUES('User3','user3@gmail.com','$2b$10$Rzfy6E78prfZq1ivxi1v6.AfDYegTpYwMUcRlImuDtUvM7cnEakIe','Celta','ABC3333',50,'D113E822');
+        INSERT INTO users (name,email,password,car,"licensePlate",credits,"tagId") VALUES('User4','user4@gmail.com','$2b$10$Rzfy6E78prfZq1ivxi1v6.AfDYegTpYwMUcRlImuDtUvM7cnEakIe','Onix','ABC4444',50,'D13CA622');
+        INSERT INTO users (name,email,password,car,"licensePlate",credits,"tagId") VALUES('User5','user5@gmail.com','$2b$10$Rzfy6E78prfZq1ivxi1v6.AfDYegTpYwMUcRlImuDtUvM7cnEakIe','Corsa','ABC5555',-10,'C1E26922');
+        INSERT INTO users (name,email,password,car,"licensePlate",credits,"tagId") VALUES('User6','user6@gmail.com','$2b$10$Rzfy6E78prfZq1ivxi1v6.AfDYegTpYwMUcRlImuDtUvM7cnEakIe','HB20','ABC6666',1,'3397952E');
+        INSERT INTO users (name,email,password,car,"licensePlate",credits,"tagId") VALUES('User7','user7@gmail.com','$2b$10$Rzfy6E78prfZq1ivxi1v6.AfDYegTpYwMUcRlImuDtUvM7cnEakIe','Fusca','ABC7777',50,'43005B2E');
     `)
 }
 

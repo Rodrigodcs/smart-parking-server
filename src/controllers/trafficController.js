@@ -30,7 +30,7 @@ async function checkIn(req,res){
         const totalSpots = config.rows[0].totalSpots
         console.log(totalSpots)
         const parked = await trafficRepository.getParked()
-        if(parked.rowCount>=totalSpots) return res.status(406).send("MAX CAPACITY")
+        if(parked.rowCount>=totalSpots) return res.status(406).send("LOTADO")
 
         //adicionar check in de usuário na tabela traffic
         await trafficRepository.userCheckIn(userId,checkInTime)

@@ -96,7 +96,7 @@ async function makeReservation(req,res){
         const totalSpots = config.rows[0].totalSpots
         console.log(totalSpots)
         const parked = await trafficRepository.getParked()
-        if(parked.rowCount>=totalSpots) return res.status(401).send("MAX CAPACITY")
+        if(parked.rowCount>=totalSpots) return res.status(401).send("ETACIONAMENTO LOTADO")
 
         //verifica se usuário já não tem alguma vaga reservada em seu nome
         const userReservedSpot = await parkingRepository.getReservedSpot(userId)
@@ -185,7 +185,5 @@ async function cancelReservation(req,res){
         return res.send(e).status(500);
     }
 }
-
-
 
 export const userController = {signUp,signIn,getInfo,makeReservation,cancelReservation}

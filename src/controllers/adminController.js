@@ -68,7 +68,7 @@ async function tagRegistration(req,res){
     temporaryUserEmail = req.body.email;
     try{
         const userExists = await userRepository.checkEmailExists(temporaryUserEmail)
-        if(!userExists.rowCount) return res.status(401).send("usuário não cadastrado")
+        if(!userExists.rowCount) return res.status(401).send("Usuário não cadastrado")
         const user = userExists.rows[0]
 
         if(user.tagId) return res.status(401).send(`Usuário já cadastrado com a tag: ${user.tagId}`)
@@ -95,7 +95,7 @@ async function tagReceived(req,res){
             resetTemporaryInfo()
             timeout = setTimeout(()=> resetTemporaryInfo(),10000);
             temporaryUserTag = cardId;
-            return res.status(200).send("info do user");
+            return res.status(200).send("Informação enviada ao Admin");
         }else if(waitingRegistration){
             const tagAlreadyRegistered = await adminRepository.findUser(cardId)
             if(tagAlreadyRegistered.rowCount) return res.status(409).send("Tag já registrada")
@@ -117,11 +117,11 @@ async function addCredits(req,res){
 
     try{
         const userExists = await userRepository.checkEmailExists(userEmail)
-        if(!userExists.rowCount) return res.status(401).send("usuário não cadastrado")
+        if(!userExists.rowCount) return res.status(401).send("Usuário não cadastrado")
 
         await userRepository.addCredits(userEmail,credits)
         
-        return res.status(200).send("CREDITOS ADICIONADOS");
+        return res.status(200).send("Créditos adicionados");
 
     }catch(e){
         console.log(e);
