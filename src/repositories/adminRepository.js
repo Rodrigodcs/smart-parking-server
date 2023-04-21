@@ -128,7 +128,7 @@ async function resetDatabase(){
 
         INSERT INTO config (value, "totalSpots") VALUES (2,4);
         
-        INSERT INTO admins (email,password) VALUES ('admin@admin.com','123456');
+        INSERT INTO admins (email,password) VALUES ('admin@gmail.com','123456');
 
         INSERT INTO users (name,email,password,car,"licensePlate",credits,"tagId") VALUES('User1','user1@gmail.com','$2b$10$Rzfy6E78prfZq1ivxi1v6.AfDYegTpYwMUcRlImuDtUvM7cnEakIe','Gol','ABC1111',50,'C1F95422');
         INSERT INTO users (name,email,password,car,"licensePlate",credits,"tagId") VALUES('User2','user2@gmail.com','$2b$10$Rzfy6E78prfZq1ivxi1v6.AfDYegTpYwMUcRlImuDtUvM7cnEakIe','Etios','ABC2222',50,'C1C2F222');
