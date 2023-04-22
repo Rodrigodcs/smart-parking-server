@@ -8,7 +8,7 @@ async function createUser(name,email,hashedPassword,car,licensePlate){
     return connection.query(`
         INSERT INTO users (name,email,password,car,"licensePlate",credits) 
         VALUES($1,$2,$3,$4,$5,$6)
-    `,[name,email,hashedPassword,car,licensePlate,50])
+    `,[name,email,hashedPassword,car,licensePlate,0])
 }
 
 async function createUserSession(id,token){
