@@ -5,6 +5,9 @@ Smart Parking is the combination of technologies, such as sensors, cameras, and 
 </p>
 
 ## Demo Video
+<a href="https://www.youtube.com/watch?v=uAcEBNRM-dc" align="center">
+    <img src="./images/thumb.png" alt="Entrance Device Schematic" width="600px">
+</a>
 
 [![Smart Parking Demo](./images/flowchart.png)](https://www.youtube.com/watch?v=uAcEBNRM-dc)
 
