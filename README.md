@@ -9,9 +9,6 @@ Smart Parking is the combination of technologies, such as sensors, cameras, and 
     <img src="./images/thumb.png" alt="Entrance Device Schematic" width="600px">
 </a>
 
-[![Smart Parking Demo](./images/flowchart.png)](https://www.youtube.com/watch?v=uAcEBNRM-dc)
-
-
 ## Client Application
 
 Access the client application here: [Smart Parking Client](https://smart-parking-client.vercel.app/)
