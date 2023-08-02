@@ -36,7 +36,7 @@ Access the admin application here: [Smart Parking Admin](https://smart-parking-a
 
 ## Schematic Diagram of the Electronic Circuitry (Entrance Device)
 
-<img src="./images/entrance-device.png" alt="Entrance Device Schematic" width="400">
+![Entrance Device Schematic](./images/entrance-device.png)
 
 ## Schematic Diagram of the Electronic Circuitry (Parking Spots Device)
 
